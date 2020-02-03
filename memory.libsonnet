@@ -2,6 +2,7 @@ local grafana = import "grafonnet-lib/grafonnet/grafana.libsonnet";
 local dashboard = grafana.dashboard;
 local template = grafana.template;
 local prometheus = grafana.prometheus;
+local colors = import "colors.libsonnet";
 
 dashboard.new("memory", uid="memory",)
 .addTemplate(
@@ -32,6 +33,7 @@ dashboard.new("memory", uid="memory",)
             legendFormat="Used",
         )
     )
+    + colors.totalused
     ,
     { x: 0, y: 0, w: 8, h: 6 }
 )
