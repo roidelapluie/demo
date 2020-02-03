@@ -2,6 +2,7 @@ local grafana = import "grafonnet-lib/grafonnet/grafana.libsonnet";
 local dashboard = grafana.dashboard;
 local template = grafana.template;
 local prometheus = grafana.prometheus;
+local colors = import "colors.libsonnet";
 
 {
     new(title, uid, total_metric, free_metric, format,)::
@@ -47,21 +48,7 @@ local prometheus = grafana.prometheus;
                     legendFormat="Used",
                 )
             )
-            + {
-                seriesOverrides: [
-                    {
-                        alias: "Total",
-                        legend: false,
-                        fill: 10,
-                        color: "rgb(72, 179, 41)",
-                    },
-                    {
-                        alias: "Used",
-                        fill: 10,
-                        color: "#bf1b00",
-                    },
-                ],
-            }
+            + colors.totalused
             ,
             { x: 0, y: 0, w: 8, h: 6 }
         ),
