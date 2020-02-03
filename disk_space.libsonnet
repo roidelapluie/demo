@@ -46,7 +46,23 @@ local prometheus = grafana.prometheus;
                     '%s-%s{instance=~"$instance",mountpoint=~"$mountpoint"}' % [total_metric, free_metric],
                     legendFormat="Used",
                 )
-            ),
+            )
+            + {
+                seriesOverrides: [
+                    {
+                        alias: "Total",
+                        legend: false,
+                        fill: 10,
+                        color: "rgb(72, 179, 41)",
+                    },
+                    {
+                        alias: "Used",
+                        fill: 10,
+                        color: "#bf1b00",
+                    },
+                ],
+            }
+            ,
             { x: 0, y: 0, w: 8, h: 6 }
         ),
 }
