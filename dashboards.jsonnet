@@ -15,4 +15,5 @@ local disk = import "disk_space.libsonnet";
         "node_filesystem_files_free",
         "short"
     ),
+    "memory.json": import "memory.libsonnet",
 }
